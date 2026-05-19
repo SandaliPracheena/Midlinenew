@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midline | Modern Clothing Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #111111;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --green: #2ecc71;
+      --black: #111111;
+      --white: #ffffff;
+      --gray: #f4f4f4;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--black);
+      margin-left: 30px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 120px 8% 60px;
+      background: linear-gradient(to right, #ffffff 60%, #eafbf1);
+      gap: 50px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: var(--green);
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 35px;
+      max-width: 550px;
+    }
+
+    .btn {
+      background: var(--black);
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #666;
+    }
+
+    .products {
+      padding: 100px 8%;
+      background: var(--gray);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      transition: 0.4s;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 25px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .product-info p {
+      color: #777;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      color: var(--green);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .buy-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 50px;
+      background: var(--black);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buy-btn:hover {
+      background: var(--green);
+    }
+
+    .about {
+      padding: 100px 8%;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .about img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text span {
+      color: var(--green);
+    }
+
+    .about-text p {
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .newsletter {
+      background: #111111;
+      color: white;
+      text-align: center;
+      padding: 90px 8%;
+    }
+
+    .newsletter h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      color: #ccc;
+      margin-bottom: 35px;
+    }
+
+    .newsletter form {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter input {
+      width: 320px;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    footer {
+      background: #0a0a0a;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .cart-popup {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--green);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s;
+      font-weight: 500;
+    }
+
+    .cart-popup.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-icon {
+      position: relative;
+      background: var(--black);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cart-icon:hover {
+      background: var(--green);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -5px;
+      background: var(--green);
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 380px;
+      height: 100vh;
+      background: white;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      z-index: 2000;
+      transition: 0.4s;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .cart-sidebar.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .close-cart {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-details h4 {
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .cart-item-details p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .cart-total {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      border: none;
+      background: var(--green);
+      color: white;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    @media(max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+
+      .about {
+        flex-direction: column;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Mid<span>line</span></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="cart-icon" id="cartIcon">
+      🛒 Cart
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Wear Your <span>Confidence</span></h1>
+      <p>
+        Discover modern fashion with Midline — a premium clothing brand built for style, comfort, and confidence. Shop trendy outfits with a clean and luxurious experience.
+      </p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1000&auto=format&fit=crop" alt="Fashion">
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <div class="section-title">
+      <h2>Featured Products</h2>
+      <p>Modern styles curated for every occasion.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" alt="T-Shirt">
+        <div class="product-info">
+          <h3>Oversized T-Shirt</h3>
+          <p>Premium cotton oversized fit with minimal modern design.</p>
+          <div class="price">LKR 4,500</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop" alt="Jacket">
+        <div class="product-info">
+          <h3>Urban Jacket</h3>
+          <p>Elegant lightweight jacket perfect for modern streetwear.</p>
+          <div class="price">LKR 8,900</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1000&auto=format&fit=crop" alt="Dress">
+        <div class="product-info">
+          <h3>Classic Green Dress</h3>
+          <p>Minimal classy design with elegant comfort and style.</p>
+          <div class="price">LKR 6,700</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1000&auto=format&fit=crop" alt="Hoodie">
+        <div class="product-info">
+          <h3>Midline Hoodie</h3>
+          <p>Soft premium hoodie designed for comfort and modern fashion.</p>
+          <div class="price">LKR 7,200</div>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop" alt="About Midline">
+
+    <div class="about-text">
+      <h2>About <span>Midline</span></h2>
+      <p>
+        Midline is a modern Sri Lankan clothing brand focused on delivering stylish, clean, and premium fashion for everyone. We combine comfort with modern aesthetics to create timeless outfits.
+      </p>
+
+      <p>
+        Our mission is to make fashion feel simple, elegant, and confident while providing a smooth online shopping experience.
+      </p>
+
+      <a href="#products" class="btn">Explore Collection</a>
+    </div>
+  </section>
+
+  <section class="newsletter" id="contact">
+    <h2>Stay Updated</h2>
+    <p>Subscribe to receive new arrivals and exclusive offers from Midline.</p>
+
+    <form>
+      <input type="email" placeholder="Enter your email" required>
+      <button class="btn" type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 Midline Clothing Brand. All Rights Reserved.</p>
+  </footer>
+
+  <div class="cart-popup" id="popup">
+    Product added to cart 🛒
+  </div>
+
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <div class="close-cart" id="closeCart">✕</div>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total" id="cartTotal">
+      Total: LKR 0
+    </div>
+
+    <button class="checkout-btn">Proceed to Checkout</button>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.buy-btn');
+    const popup = document.getElementById('popup');
+    const cartCount = document.getElementById('cartCount');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartIcon = document.getElementById('cartIcon');
+    const closeCart = document.getElementById('closeCart');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+
+    let count = 0;
+    let total = 0;
+
+    const products = [
+      {
+        name: 'Oversized T-Shirt',
+        price: 4500,
+        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop'
+      },
+      {
+        name: 'Urban Jacket',
+        price: 8900,
+        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop'
+      },
+      {
+        name: 'Classic Green Dress',
+        price: 6700,
+        image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1000&auto=format&fit=crop'
+      },
+      {
+        name: 'Midline Hoodie',
+        price: 7200,
+        image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1000&auto=format&fit=crop'
+      }
+    ];
+
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        popup.classList.add('show');
+
+        setTimeout(() => {
+          popup.classList.remove('show');
+        }, 2000);
+
+        count++;
+        cartCount.textContent = count;
+
+        const item = document.createElement('div');
+        item.classList.add('cart-item');
+        item.innerHTML = `
+          <img src="${products[index].image}" alt="${products[index].name}">
+
+          <div class="cart-item-details">
+            <h4>${products[index].name}</h4>
+            <p>LKR ${products[index].price.toLocaleString()}</p>
+          </div>
+        `;
+
+        cartItems.appendChild(item);
+
+        total += products[index].price;
+        cartTotal.textContent = `Total: LKR ${total.toLocaleString()}`;
+      });
+    });
+
+    cartIcon.addEventListener('click', () => {
+      cartSidebar.classList.add('active');
+    });
+
+    closeCart.addEventListener('click', () => {
+      cartSidebar.classList.remove('active');
+    });
+
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for subscribing to Midline!');
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
